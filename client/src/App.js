@@ -15,12 +15,7 @@ function App() {
       date: date,
       status: status,
     }).then(() => {
-      setCompanyList([
-        ...companyList, {
-        name: name,
-        date: date,
-        status: status,
-      }]);
+      console.log("success");
     });
   };
 
@@ -58,16 +53,26 @@ function App() {
       </div>
       <div className="companies">
         <button onClick={getCompanies}>Show Companies</button>
-
-        {companyList.map((val, key) => {
-          return (
-            <div className="company">
-              <h3>Name: {val.name}</h3>
-              <h3>Date: {val.date}</h3>
-              <h3>Status: {val.status}</h3>
-            </div>
-          );
-        })}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+              {companyList.map((val, key) => {
+                return (
+                    <tr>
+                      <td>{val.name}</td>
+                      <td>{val.date}</td>
+                      <td>{val.status}</td>
+                    </tr>
+                );
+              })}
+            </tbody>
+        </table>
       </div>
     </div>
   );

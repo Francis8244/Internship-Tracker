@@ -1,4 +1,5 @@
 .App {
+  background-color: lightblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,16 +38,15 @@ button:hover {
   width: 100%;
 }
 
-.company {
-  width: 700px;
-  height: 50px;
-  border: 1px solid black;
-  margin: 10px;
-  display: flex;
-  padding: 10px;
-  font-family: 'Courier New', Courier, monospace;
+table {
+  background-color: white;
+  margin: 20px;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
 }
 
-.company h3 {
-  margin: 20px;
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
 }
