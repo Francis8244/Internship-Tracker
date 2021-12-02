@@ -32,6 +32,23 @@ app.post("/create", (req, res) => {
   );
 });
 
+app.post("/update", (req, res) => {
+  const name = req.body.name;
+  const status = req.body.status;
+
+  db.query(
+      "UPDATE companies SET status = ? WHERE name = ?",
+      [status, name],
+      (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values updated");
+      }
+    }
+  );
+});
+
 app.get('/companies', (req, res) => {
     db.query("SELECT * FROM companies", (err, result) => {
         if (err) {

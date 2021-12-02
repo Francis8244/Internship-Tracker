@@ -7,6 +7,9 @@ function App() {
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("");
 
+  const [nameTwo, updateName] = useState("");
+  const [statusTwo, updateStatus] = useState("");
+
   const [companyList, setCompanyList] = useState([]);
 
   const addCompany = () => {
@@ -23,9 +26,17 @@ function App() {
     });
   };
 
+  const updateCompany = () => {
+    Axios.post("http://localhost:3001/update", {
+      name: nameTwo,
+      status: statusTwo,
+    });
+  };
+
   return (
     <div className="App">
       <div className="information">
+        <h1 className="instruction">Enter in a new internship:</h1>
         <label className="name">Name:</label>
         <input
           type="text"
@@ -71,6 +82,24 @@ function App() {
             })}
           </tbody>
         </table>
+      </div>
+      <div className="update">
+        <h1>Update the status of an internship:</h1>
+        <label className="name">Name:</label>
+        <input
+          type="text"
+          onChange={(event) => {
+            updateName(event.target.value);
+          }}
+        />
+        <label className="status">Status:</label>
+        <input
+          type="text"
+          onChange={(event) => {
+            updateStatus(event.target.value);
+          }}
+        />
+        <button onClick={updateCompany}>Update Company</button>
       </div>
     </div>
   );
