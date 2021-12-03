@@ -10,7 +10,8 @@ function App() {
   const [nameTwo, updateName] = useState("");
   const [statusTwo, updateStatus] = useState("");
 
-  const [companyList, setCompanyList] = useState([]);
+  const [companies, setCompanyList] = useState([]);
+  const [internships, setInternships] = useState([]);
 
   const addCompany = () => {
     Axios.post("http://localhost:3001/create", {
@@ -30,6 +31,12 @@ function App() {
     Axios.post("http://localhost:3001/update", {
       name: nameTwo,
       status: statusTwo,
+    });
+  };
+
+  const totalInternships = () => {
+    Axios.get("http://localhost:3001/total").then((response) => {
+      setInternships(response.data);
     });
   };
 
@@ -71,10 +78,10 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {companyList.map((val, key) => {
+            {companies.map((val, key) => {
               return (
                 <tr>
-                  <td width>{val.name}</td>
+                  <td>{val.name}</td>
                   <td>{val.date}</td>
                   <td>{val.status}</td>
                 </tr>
@@ -100,6 +107,15 @@ function App() {
           }}
         />
         <button onClick={updateCompany}>Update Company</button>
+      </div>
+      <div className="total">
+        <h1>Display the total number of internships:</h1>
+        <button onClick={totalInternships}>Display Internships</button>
+          {internships.map((val, key) => {
+            return (
+              <td className="size">Total internships applied to: {val.total}</td>
+            );
+          })}
       </div>
     </div>
   );

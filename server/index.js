@@ -36,6 +36,7 @@ app.post("/update", (req, res) => {
   const name = req.body.name;
   const status = req.body.status;
 
+  
   db.query(
       "UPDATE companies SET status = ? WHERE name = ?",
       [status, name],
@@ -55,6 +56,16 @@ app.get('/companies', (req, res) => {
             console.log(err);
         } else {
             res.send(result);
+        }
+    });
+});
+
+app.get('/total', (req, res) => {
+    db.query("SELECT COUNT(*) AS total FROM companies", (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(result);
         }
     });
 });
