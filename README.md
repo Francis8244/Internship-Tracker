@@ -6,4 +6,5 @@ Progress so far:
 
 
 
-![internship](https://user-images.githubusercontent.com/60706869/141064614-4fcfbd63-603c-4018-9988-65eb9c3cd385.PNG)
+
+![internshiptracker](https://user-images.githubusercontent.com/60706869/144537781-f4f84398-ddd6-42b1-b297-6ab10f1bc571.PNG)
